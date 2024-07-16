@@ -1,0 +1,5 @@
+student_id,first_name,last_name,date_of_birth,year,quarter,grade,email
+1,John,Doe,2005-06-15,2024,1,85,john.doe@example.com
+2,Jane,Smith,2006-07-20,2024,1,90,jane.smith@example.com
+3,Bob,Johnson,2005-09-10,2024,1,75,bob.johnson@example.com
+4,Alice,Brown,2006-02-14,2024,1,88,alice.brown@example.com
