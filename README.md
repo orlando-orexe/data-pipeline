@@ -1,5 +1,8 @@
 # Challenge
 
+# High Level Architecture Diagram
+![High Availability Architecture Diagram](./_assets/ha_architecture_diagram.png)
+
 # Overview
 This architecture outlines the deployment of a system that allows uploading student data files to an S3 bucket, processing these files using AWS Lambda, and storing the data in Amazon DocumentDB. The setup ensures automation, scalability, high availability, and security.
 
