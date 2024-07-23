@@ -36,6 +36,15 @@ This architecture outlines the deployment of a system that allows uploading stud
 - Security Groups and NACLs
 
     - Manages network access to DocumentDB and other services.
+
+## Permissions
+
+- Adds these Policies to your user or role to deploy the infrastructure
+  - AmazonS3FullAccess
+  - AmazonS3ObjectLambdaExecutionRolePolicy
+  - AWSLambda_FullAccess
+  - AwsLambdaVPCAccessExecutionRole
+
 ## Data Flow
 1. File Upload
 
