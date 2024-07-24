@@ -110,3 +110,16 @@ output "docdb_cluster_reader_endpoint" {
 # db_cluster_identifier          = aws_docdb_cluster.docdb_cluster.id
 # db_cluster_snapshot_identifier = "resourcetestsnapshot1234sa"
 #}
+
+ data "aws_route_tables" "docdb_route_tables" {
+   vpc_id = aws_vpc.docdb_vpc.id
+ }
+
+ resource "aws_vpc_endpoint" "s3_endpoint" {
+   vpc_id       = aws_vpc.docdb_vpc.id
+   service_name = "com.amazonaws.us-east-2.s3"  # Cambia la región si es diferente
+   route_table_ids = data.aws_route_tables.docdb_route_tables.ids
+
+   tags = {
+     Name = "s3_endpoint"}
+ }

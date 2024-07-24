@@ -91,9 +91,28 @@ cd iac
 terraform init
 terraform apply
 ``` 
-5. Upload a student data file to the S3 bucket.
-6. Verify the data in Amazon DocumentDB.
-7. Clean up the resources:
+5. Obtain the `global-bundle.pem` from documentDB:
+
+```bash
+curl https://s3.amazonaws.com/rds-downloads/rds-combined-ca-bundle.pem -o global-bundle.pem
+```
+
+6. Place the `global-bundle.pem` in the `dependencies` folder:
+
+```bash
+mv global-bundle.pem dependencies/
+```
+
+7. Compress the contents of the `dependencies` folder:
+
+```bash
+zip -r dependencies.zip dependencies/
+```
+
+8. Update the Lambda function with the new ZIP file:
+9. Upload a student data file to the S3 bucket.
+10. Verify the data in Amazon DocumentDB.
+11. Clean up the resources:
 
 ```bash
 terraform destroy

@@ -1,8 +1,8 @@
 resource "aws_s3_bucket" "student_data_bucket" {
-  bucket = "student-data-bucketk2jsads"
+  bucket = "student-data-bucketk2jsadsqwe"
 
   tags = {
-    Name        = "student-data-bucketk2jsads"
+    Name        = "student-data-bucketk2jsadsqwe"
     Environment = "dev"
   }
 }

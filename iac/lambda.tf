@@ -36,6 +36,17 @@ resource "aws_iam_policy" "lambda_policy" {
         Effect   = "Allow"
         Resource = "*"
       },
+      {
+        Action   = [
+          "ec2:CreateNetworkInterface",
+          "ec2:DescribeNetworkInterfaces",
+          "ec2:DeleteNetworkInterface",
+          "ec2:AssignPrivateIpAddresses",
+          "ec2:UnassignPrivateIpAddresses"
+        ]
+        Effect   = "Allow"
+        Resource = "*"
+      },
     ]
   })
 }
@@ -50,7 +61,7 @@ resource "aws_lambda_function" "process_csv" {
   handler       = "lambda_function.lambda_handler"
   runtime       = "python3.8"
   role          = aws_iam_role.lambda_role.arn
-  timeout       = 120
+  timeout       = 360
 
   filename         = "lambda_function.zip"
   source_code_hash = filebase64sha256("lambda_function.zip")
@@ -62,5 +73,10 @@ resource "aws_lambda_function" "process_csv" {
       DATABASE    = var.database_name
       COLLECTION  = var.collection_name
     }
+  }
+
+  vpc_config {
+    security_group_ids = [aws_security_group.lambda_sg.id]
+    subnet_ids         = [aws_subnet.docdb_subnet_1.id, aws_subnet.docdb_subnet_2.id]
   }
 }
