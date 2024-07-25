@@ -59,6 +59,19 @@ This architecture outlines the deployment of a system that allows uploading stud
 
    - The processed data is stored in Amazon DocumentDB, accessible via MongoDB tools.
 
+## Connect to Amazon DocumentDB from MongoDB Compass
+
+1. Create a ec2 instance in the same VPC as the DocumentDB.
+2. Make sure the ec2 instance has the same security group as the DocumentDB.
+3. Use the ec2 as a ssh tunnel to connect to the DocumentDB.
+4. On your local machine setup MongoDB Compass to connect through the ssh tunnel to the DocumentDB.
+    - SSH Hostname: hostname of the ec2 instance
+    - SSH Tunnel Port: 22
+    - SSH Username: ec2-user
+    - SSH Identity File: path to the private key
+    - SSL: Enabled
+    - SSL Method: Server Validation
+    - SSL CA File: path to the global-bundle.pem
 
 ## Project Directories
 - /iac/
